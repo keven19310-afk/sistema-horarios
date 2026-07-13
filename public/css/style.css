@@ -1,0 +1,338 @@
+/* Reset e estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #1a2b5c;
+    --secondary-blue: #2c3e7a;
+    --light-blue: #e8edf5;
+    --accent-green: #27ae60;
+    --accent-red: #e74c3c;
+    --accent-orange: #f39c12;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --shadow: 0 2px 10px rgba(0,0,0,0.1);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: #f5f7fa;
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding-bottom: 80px;
+}
+
+/* Container principal */
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+/* Cabeçalho */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: var(--text-light);
+    padding: 20px 16px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.header p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Navegação de semanas */
+.week-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 12px 16px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.week-navigation button {
+    background: var(--light-blue);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    cursor: pointer;
+    transition: var(--transition);
+    touch-action: manipulation;
+}
+
+.week-navigation button:active {
+    transform: scale(0.95);
+}
+
+.week-navigation .week-label {
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+}
+
+/* Dias da semana - Cards */
+.days-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.day-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--light-blue);
+    transition: var(--transition);
+    animation: fadeIn 0.3s ease;
+}
+
+.day-card.current-day {
+    border-left: 4px solid var(--accent-green);
+    background: #f8fff8;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.15);
+}
+
+.day-card .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.day-card .day-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+}
+
+.day-card .day-date {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.day-card .event-count {
+    background: var(--light-blue);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: var(--primary-blue);
+}
+
+/* Eventos */
+.event {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    border-left: 3px solid var(--light-blue);
+    transition: var(--transition);
+}
+
+.event:last-child {
+    margin-bottom: 0;
+}
+
+.event .event-time {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+}
+
+.event .event-name {
+    font-weight: 500;
+    margin: 4px 0;
+}
+
+.event .event-type {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.event.type-horario {
+    border-left-color: var(--primary-blue);
+}
+
+.event.type-horario .event-type {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.event.type-exame {
+    border-left-color: var(--accent-red);
+}
+
+.event.type-exame .event-type {
+    background: var(--accent-red);
+    color: white;
+}
+
+.event.type-avaliacao {
+    border-left-color: var(--accent-orange);
+}
+
+.event.type-avaliacao .event-type {
+    background: var(--accent-orange);
+    color: white;
+}
+
+/* Estado vazio */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.empty-state .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.empty-state h3 {
+    color: var(--primary-blue);
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Lista de Salas */
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.room-card {
+    background: white;
+    padding: 16px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+    text-decoration: none;
+    color: var(--text-dark);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.room-card:active {
+    transform: scale(0.96);
+}
+
+.room-card .room-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.room-card .room-name {
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+.room-card .room-info {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+/* Botão voltar */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--light-blue);
+    color: var(--primary-blue);
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    touch-action: manipulation;
+}
+
+.back-button:active {
+    transform: scale(0.95);
+}
+
+/* Loading state */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--primary-blue);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-blue);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 3px;
+}
+
+/* Responsive para tablets */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        padding: 24px;
+    }
+    
+    .days-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    
+    .rooms-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
