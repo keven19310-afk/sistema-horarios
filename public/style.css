@@ -1,4 +1,6 @@
-/* Reset e estilos base */
+/* ============================================
+   RESET E ESTILOS BASE
+   ============================================ */
 * {
     margin: 0;
     padding: 0;
@@ -14,27 +16,29 @@
     --accent-orange: #f39c12;
     --text-dark: #2c3e50;
     --text-light: #ffffff;
-    --shadow: 0 2px 10px rgba(0,0,0,0.1);
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     --border-radius: 12px;
     --transition: all 0.3s ease;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: #f5f7fa;
     color: var(--text-dark);
-    line-height: 1.6;
+    padding: 16px;
     padding-bottom: 80px;
+    touch-action: manipulation;
+    overflow-y: auto;
 }
 
-/* Container principal */
 .container {
     max-width: 480px;
     margin: 0 auto;
-    padding: 16px;
 }
 
-/* Cabeçalho */
+/* ============================================
+   CABEÇALHO
+   ============================================ */
 .header {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     color: var(--text-light);
@@ -47,16 +51,18 @@ body {
 .header h1 {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 4px;
 }
 
 .header p {
     font-size: 0.9rem;
     opacity: 0.9;
+    margin-top: 4px;
 }
 
-/* Navegação de semanas */
-.week-navigation {
+/* ============================================
+   NAVEGAÇÃO SEMANAL
+   ============================================ */
+.week-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,32 +71,40 @@ body {
     border-radius: var(--border-radius);
     margin-bottom: 20px;
     box-shadow: var(--shadow);
+    touch-action: manipulation;
 }
 
-.week-navigation button {
+.week-nav button {
     background: var(--light-blue);
     border: none;
-    padding: 8px 16px;
+    padding: 12px 16px;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--primary-blue);
     cursor: pointer;
-    transition: var(--transition);
     touch-action: manipulation;
+    min-height: 44px;
+    min-width: 80px;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: var(--transition);
 }
 
-.week-navigation button:active {
+.week-nav button:active {
     transform: scale(0.95);
 }
 
-.week-navigation .week-label {
+.week-nav .week-label {
     font-weight: 600;
     color: var(--primary-blue);
     font-size: 0.9rem;
+    text-align: center;
 }
 
-/* Dias da semana - Cards */
+/* ============================================
+   CARDS DOS DIAS
+   ============================================ */
 .days-grid {
     display: flex;
     flex-direction: column;
@@ -103,14 +117,12 @@ body {
     padding: 16px;
     box-shadow: var(--shadow);
     border-left: 4px solid var(--light-blue);
-    transition: var(--transition);
     animation: fadeIn 0.3s ease;
 }
 
 .day-card.current-day {
     border-left: 4px solid var(--accent-green);
     background: #f8fff8;
-    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.15);
 }
 
 .day-card .day-header {
@@ -139,7 +151,9 @@ body {
     color: var(--primary-blue);
 }
 
-/* Eventos */
+/* ============================================
+   EVENTOS
+   ============================================ */
 .event {
     padding: 12px;
     margin-bottom: 8px;
@@ -171,13 +185,11 @@ body {
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .event.type-horario {
     border-left-color: var(--primary-blue);
 }
-
 .event.type-horario .event-type {
     background: var(--primary-blue);
     color: white;
@@ -186,7 +198,6 @@ body {
 .event.type-exame {
     border-left-color: var(--accent-red);
 }
-
 .event.type-exame .event-type {
     background: var(--accent-red);
     color: white;
@@ -195,37 +206,14 @@ body {
 .event.type-avaliacao {
     border-left-color: var(--accent-orange);
 }
-
 .event.type-avaliacao .event-type {
     background: var(--accent-orange);
     color: white;
 }
 
-/* Estado vazio */
-.empty-state {
-    text-align: center;
-    padding: 40px 20px;
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-}
-
-.empty-state .empty-icon {
-    font-size: 3rem;
-    margin-bottom: 16px;
-}
-
-.empty-state h3 {
-    color: var(--primary-blue);
-    margin-bottom: 8px;
-}
-
-.empty-state p {
-    color: #7f8c8d;
-    font-size: 0.9rem;
-}
-
-/* Lista de Salas */
+/* ============================================
+   LISTA DE SALAS
+   ============================================ */
 .rooms-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -238,11 +226,14 @@ body {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     text-align: center;
-    transition: var(--transition);
-    text-decoration: none;
-    color: var(--text-dark);
     cursor: pointer;
+    transition: var(--transition);
     touch-action: manipulation;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .room-card:active {
@@ -250,13 +241,14 @@ body {
 }
 
 .room-card .room-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 8px;
 }
 
 .room-card .room-name {
     font-weight: 600;
     color: var(--primary-blue);
+    font-size: 1rem;
 }
 
 .room-card .room-info {
@@ -264,36 +256,63 @@ body {
     color: #7f8c8d;
 }
 
-/* Botão voltar */
+/* ============================================
+   BOTÃO VOLTAR
+   ============================================ */
 .back-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
+    display: inline-block;
+    padding: 12px 24px;
     background: var(--light-blue);
     color: var(--primary-blue);
-    text-decoration: none;
+    border: none;
     border-radius: 20px;
     font-weight: 600;
     margin-top: 20px;
-    transition: var(--transition);
     cursor: pointer;
-    border: none;
     touch-action: manipulation;
+    min-height: 44px;
+    font-size: 1rem;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: var(--transition);
 }
 
 .back-button:active {
     transform: scale(0.95);
 }
 
-/* Loading state */
+/* ============================================
+   ESTADOS
+   ============================================ */
 .loading {
     text-align: center;
     padding: 40px;
     color: var(--primary-blue);
+    font-size: 1.1rem;
 }
 
-/* Animações */
+.empty-state {
+    text-align: center;
+    padding: 10px;
+}
+.empty-state p {
+    color: #7f8c8d;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   PÁGINAS
+   ============================================ */
+.page {
+    display: none;
+}
+.page.active {
+    display: block;
+}
+
+/* ============================================
+   ANIMAÇÕES
+   ============================================ */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -305,33 +324,21 @@ body {
     }
 }
 
-/* Scrollbar personalizada */
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--light-blue);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary-blue);
-    border-radius: 3px;
-}
-
-/* Responsive para tablets */
+/* ============================================
+   RESPONSIVO
+   ============================================ */
 @media (min-width: 768px) {
-    .container {
-        max-width: 720px;
+    body {
         padding: 24px;
     }
-    
+    .container {
+        max-width: 720px;
+    }
     .days-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 16px;
     }
-    
     .rooms-grid {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
